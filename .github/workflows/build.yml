@@ -30,8 +30,8 @@ jobs:
           wget https://download.java.net/java/early_access/jextract/25/2/openjdk-25-jextract+2-4_linux-x64_bin.tar.gz
           tar -xvf openjdk-25-jextract+2-4_linux-x64_bin.tar.gz
           chmod +x jextract-25/bin/jextract
-          chmod +x generate_source.sh
-          bash generate_source.sh
+          find /usr -name avformat.h
+          jextract /usr/include/x86_64-linux-gnu/libavformat/avformat.h -t com.asrevo.ffmpeg -l avformat --output src/main/java
           
       - name: Build with Gradle
         run: ./gradlew build test
