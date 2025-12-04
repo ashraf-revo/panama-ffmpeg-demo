@@ -8,6 +8,6 @@ class VideoTest {
     @Test
     void shouldReturnActualVideoDuration() {
         Video input = new Video("input.mp4");
-        assertEquals(30526667L, input.duration());
+        assertEquals(30.526667D, input.duration());
     }
 }
