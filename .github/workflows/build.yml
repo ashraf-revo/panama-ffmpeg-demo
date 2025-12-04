@@ -32,11 +32,11 @@ jobs:
         run: |
           find /usr -name avformat.h
           pwd
-          ls -al
           wget https://download.java.net/java/early_access/jextract/25/2/openjdk-25-jextract+2-4_linux-x64_bin.tar.gz
           tar -xvf openjdk-25-jextract+2-4_linux-x64_bin.tar.gz
           chmod +x jextract-25/bin/jextract
           jextract-25/bin/jextract /usr/include/x86_64-linux-gnu/libavformat/avformat.h -t com.asrevo.ffmpeg -l avformat --output src/main/java
+          ls -al
           
       - name: Build with Gradle
         run: ./gradlew build test
