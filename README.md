@@ -1,3 +1,5 @@
+[![Java CI](https://github.com/ashraf-revo/panama-ffmpeg-demo/actions/workflows/build.yml/badge.svg)](https://github.com/ashraf-revo/panama-ffmpeg-demo/actions)
+
 # Java Panama FFMpeg Demo
 
 This project demonstrates how to use Java's Foreign Function & Memory (FFM) API, also known as Project Panama, to interact with native libraries. Specifically, this demo uses `jextract` to generate Java bindings for the FFMpeg library and then uses those bindings to calculate the duration of a video file.
