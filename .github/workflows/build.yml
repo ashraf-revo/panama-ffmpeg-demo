@@ -35,5 +35,8 @@ jobs:
           chmod +x jextract-25/bin/jextract
           jextract-25/bin/jextract /usr/include/x86_64-linux-gnu/libavformat/avformat.h -t com.asrevo.ffmpeg -l avformat --output ${{ github.workspace }}/src/main/java
           
+      - name: list generated source
+        run: ls -R
+
       - name: Build with Gradle
         run: ./gradlew build test
