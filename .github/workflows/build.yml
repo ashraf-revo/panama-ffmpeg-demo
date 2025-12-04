@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK 21
+      - name: Set up JDK 25
         uses: actions/setup-java@v4
         with:
           java-version: '25'
@@ -28,15 +28,12 @@ jobs:
           sudo apt-get install -y ffmpeg
           sudo apt-get install libavformat-dev
 
-      - name: Install jextract
+      - name: Generate sources with Jextract
         run: |
-          find /usr -name avformat.h
-          pwd
           wget https://download.java.net/java/early_access/jextract/25/2/openjdk-25-jextract+2-4_linux-x64_bin.tar.gz
           tar -xvf openjdk-25-jextract+2-4_linux-x64_bin.tar.gz
           chmod +x jextract-25/bin/jextract
-          jextract-25/bin/jextract /usr/include/x86_64-linux-gnu/libavformat/avformat.h -t com.asrevo.ffmpeg -l avformat --output src/main/java
-          ls -al
+          jextract-25/bin/jextract /usr/include/x86_64-linux-gnu/libavformat/avformat.h -t com.asrevo.ffmpeg -l avformat --output ${{ github.workspace }}/src/main/java
           
       - name: Build with Gradle
         run: ./gradlew build test
